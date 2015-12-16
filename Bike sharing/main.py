@@ -1,5 +1,6 @@
 import pandas as pd
+import Preprocessing as prep
 
 train_data = pd.read_csv('data/train.csv')
 
-print train_data.describe()
+print prep.create_dummies(train_data,'season').describe()
