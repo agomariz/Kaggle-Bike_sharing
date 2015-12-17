@@ -24,3 +24,14 @@ def process_date_column(df,column):
 
     return df.drop(column, 1)
 
+def get_parts_of_days(df, column):
+    def _get_part_of_day(h):
+        res = 'night'
+        if 6<=h<13: res = 'morning'
+        elif 13<=h<19: res = 'afternoon'
+        elif 19<=h<23: res = 'evening'
+        return res
+
+    df['part_of_day'] = df[column].map(lambda h:_get_part_of_day(h))
+    return df
+
